@@ -20,8 +20,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 180)]
-    
+    #[ORM\Column(length: 180, unique: true)]
+
     private ?string $name = null;
 
     #[ORM\Column(length: 180)]
@@ -36,7 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private ?string $password = null;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', )]
     private ?\DateTimeInterface $birthday = null;
 
     #[ORM\Column(type: 'boolean')]

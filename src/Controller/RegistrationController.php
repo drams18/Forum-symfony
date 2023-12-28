@@ -15,6 +15,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
+use function Symfony\Component\Clock\now;
+
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -28,6 +30,11 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        $user->setBirthday(new \DateTime());
+        $user->setUsername('');
+        $user->setName('');
+        $user->setFirstName('');
+        $user->setMail('');
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
